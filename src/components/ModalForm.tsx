@@ -19,7 +19,7 @@ function ModalForm() {
       <InputField label="Username" id="username" type="text" required minLength={5} maxLength={255} className="w-full" {...register("username")} />
 
       <InputField label="E-Mail" id="email" type="email" placeholder="Email" required autoComplete="email" className="w-full" {...register("email")} />
-     <PhoneInputField label="Phone Number" type="tel" id="phoneNumber" {...register("phoneNumber")} />
+     <PhoneInputField label="Phone Number" type="tel" id="phoneNumber" placeholder="12 345 67 89" {...register("phoneNumber")} />
 
       <InputField label="City" id="city" type="text" required className="w-full" {...register("city")} />
       <InputField label="Postcode" id="postcode" type="text" required minLength={4} maxLength={4} className="w-full" {...register("postcode")} />
