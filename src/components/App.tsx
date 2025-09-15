@@ -1,12 +1,13 @@
-import { useState } from 'react'
 import '/src/styles/App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import Modal from './Modal'
+import ModalForm from './ModalForm'
+function App() 
+{
   return (
     <>
-      <h1>Vorlage - M294</h1>
+      <Modal>
+        <ModalForm />
+      </Modal>
     </>
   )
 }
