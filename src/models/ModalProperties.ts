@@ -1,4 +1,4 @@
 export type ModalProperties =
 {
-    children: React.ReactNode
+    children: ({ setOpen }: { setOpen: (open: boolean) => void }) => React.ReactNode
 }

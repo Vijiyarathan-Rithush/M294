@@ -5,7 +5,7 @@ function App()
 {
   return (
     <Modal>
-      <ModalForm />
+      {({ setOpen }) => <ModalForm setOpen={setOpen} />}
     </Modal>
   );
 }

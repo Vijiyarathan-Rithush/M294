@@ -10,7 +10,7 @@ function Modal({ children }: ModalProperties)
                 {isOpen && (
                     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
                         <div className="w-full max-w-[625px] md:max-w-[800px] rounded-2xl bg-white p-6 shadow-xl ring-1 ring-black/10">
-                            {children}
+                            {children({ setOpen })}
                         </div>
                     </div>
                 )}
