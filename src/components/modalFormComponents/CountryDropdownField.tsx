@@ -1,14 +1,16 @@
-import type { CountryProperties } from "../../models/CountryProperties";
-import type { Option } from "../../models/Option";
-
 import Select from "react-select";
 import { Controller } from "react-hook-form";
-
 import { useCountryOptions } from "../../utils/useCountryOptions";
 import { countrySelectStyles } from "../select/countrySelectStyles";
 import { OptionComponent, SingleValueComponent } from "../select/countrySelectComponents";
 
-function CountryDropdownField({ control, label, name }: CountryProperties) {
+interface CountryDropdownFieldProps {
+  control: any;
+  label: string;
+  name: string;
+}
+
+function CountryDropdownField({ control, label, name }: CountryDropdownFieldProps) {
   const options = useCountryOptions();
 
   return (
@@ -26,8 +28,8 @@ function CountryDropdownField({ control, label, name }: CountryProperties) {
             classNamePrefix="react-select"
             placeholder="Bitte Land auswählen..."
             options={options}
-            value={options.find((country: Option) => country.value === field.value) || null}
-            onChange={(selected) => field.onChange((selected as Option)?.value || "")}
+            value={options.find((country) => country.value === field.value) || null}
+            onChange={(selected) => field.onChange(selected?.value || "")}
             styles={countrySelectStyles}
             components={{ Option: OptionComponent, SingleValue: SingleValueComponent }}
             isClearable
