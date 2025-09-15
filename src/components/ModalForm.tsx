@@ -11,30 +11,30 @@ function ModalForm() {
   const onSubmit = (data: ModalFormData) => console.log("Formular abgesendet:", data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto max-h-[80vh] md:max-h-[85vh] min-h-0" style={{ WebkitOverflowScrolling: "touch" }}>
       <div className="md:col-span-2"><Title label="Registrierungsformular" /></div>
 
-      <InputField label="Full Name" id="full_name" required minLength={5} maxLength={255} {...register("name")} />
-      <InputField label="Username" id="username" type="text" required minLength={5} maxLength={255} {...register("username")} />
+      <InputField label="Full Name" id="full_name" required minLength={5} maxLength={255} className="w-full" {...register("name")} />
+      <InputField label="Username" id="username" type="text" required minLength={5} maxLength={255} className="w-full" {...register("username")} />
 
-      <InputField label="E-Mail" id="email" type="email" required autoComplete="email" {...register("email")} />
-      <InputField label="Phone Number" id="phone_number" type="tel" required autoComplete="tel" placeholder="0123456789" minLength={10} maxLength={10} {...register("phoneNumber")} />
+      <InputField label="E-Mail" id="email" type="email" placeholder="Email" required autoComplete="email" className="w-full" {...register("email")} />
+      <InputField label="Phone Number" id="phone_number" type="tel" required autoComplete="tel" placeholder="012 345 67 89" minLength={10} maxLength={10} className="w-full" {...register("phoneNumber")} />
 
-      <InputField label="City" id="city" type="text" required {...register("city")} />
-      <InputField label="Postcode" id="postcode" type="text" required placeholder="8000" minLength={4} maxLength={4} {...register("postcode")} />
+      <InputField label="City" id="city" type="text" required className="w-full" {...register("city")} />
+      <InputField label="Postcode" id="postcode" type="text" required minLength={4} maxLength={4} className="w-full" {...register("postcode")} />
 
       <CountryDropdownField control={control} name="country" label="Country" />
-      <InputField label="Address" id="address" type="text" required placeholder="Musterstrasse 1" {...register("address")} />
+      <InputField label="Address" id="address" type="text" required className="w-full" {...register("address")} />
 
-      <InputField label="Birthday" id="date_of_birth" type="date" required {...register("dateOfBirth")} />
-      <InputField label="Password" id="password" type="password" required autoComplete="new-password" minLength={12} maxLength={255} {...register("password")} />
+      <InputField label="Birthday" id="date_of_birth" type="date" required className="w-full" {...register("dateOfBirth")} />
+      <div className="w-full"><UploadField label="Ausweis hochladen (PNG/JPG/PDF, max. 5 files)" multiple accept=".png,.jpg,.jpeg,.pdf" {...register("idConfirmation")} /></div>
 
-      <InputField label="Confirm Password" id="confirm_password" type="password" required minLength={12} maxLength={255} />
-      <div><UploadField label="Ausweis hochladen (PNG/JPG/PDF, max. 5 files)" multiple accept=".png,.jpg,.jpeg,.pdf" {...register("idConfirmation")} /></div>
+      <InputField label="Password" id="password" type="password" required autoComplete="new-password" minLength={12} maxLength={255} className="w-full" {...register("password")} />
+      <InputField label="Confirm Password" id="confirm_password" type="password" required minLength={12} maxLength={255} className="w-full" />
 
-      <div className="md:col-span-2 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
-        <ButtonField label="Abbrechen" />
-        <ButtonField label="Absenden" />
+      <div className="md:col-span-2 flex flex-col gap-2 sm:flex-row sm:justify-between">
+        <ButtonField label="Abbrechen" className="w-full sm:w-auto" />
+        <ButtonField label="Absenden" className="w-full sm:w-auto" />
       </div>
     </form>
   );
