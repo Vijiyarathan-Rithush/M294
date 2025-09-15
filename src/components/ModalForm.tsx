@@ -4,6 +4,7 @@ import InputField from "./modalFormComponents/InputField";
 import UploadField from "./modalFormComponents/UploadField";
 import ButtonField from "./modalFormComponents/ButtonField";
 import CountryDropdownField from "./modalFormComponents/CountryDropdownField";
+import PhoneInputField from "./modalFormComponents/PhoneInputField";
 import type { ModalFormData } from "../models/ModalFromData";
 
 function ModalForm() {
@@ -18,7 +19,7 @@ function ModalForm() {
       <InputField label="Username" id="username" type="text" required minLength={5} maxLength={255} className="w-full" {...register("username")} />
 
       <InputField label="E-Mail" id="email" type="email" placeholder="Email" required autoComplete="email" className="w-full" {...register("email")} />
-      <InputField label="Phone Number" id="phone_number" type="tel" required autoComplete="tel" placeholder="012 345 67 89" minLength={10} maxLength={10} className="w-full" {...register("phoneNumber")} />
+     <PhoneInputField label="Phone Number" type="tel" id="phoneNumber" {...register("phoneNumber")} />
 
       <InputField label="City" id="city" type="text" required className="w-full" {...register("city")} />
       <InputField label="Postcode" id="postcode" type="text" required minLength={4} maxLength={4} className="w-full" {...register("postcode")} />

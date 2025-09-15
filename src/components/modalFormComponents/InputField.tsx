@@ -1,5 +1,5 @@
 import type { ModalFormProperties } from "../../models/ModalFormProperties";
-import { UserIcon, PhoneIcon, CalendarIcon, KeyIcon } from "@heroicons/react/16/solid";
+import { UserIcon, CalendarIcon, KeyIcon } from "@heroicons/react/16/solid";
 
 function InputField({ label, id, type, required, placeholder, minLength, maxLength, ...rest }: ModalFormProperties) {
     const inputId = id ?? rest.name;
@@ -34,7 +34,6 @@ function getIconByType(type?: ModalFormProperties["type"])
 {
     switch (type) 
     {
-        case "tel":      return PhoneIcon;
         case "date":     return CalendarIcon;
         case "password": return KeyIcon;
         case "text":     return UserIcon;
