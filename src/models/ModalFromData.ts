@@ -10,5 +10,6 @@ export type ModalFormData =
     address: string;
     phoneNumber: string;
     city: string;
-    idConfirmation: FileList;
+    confirmPassword: string;
+    idConfirmation: FileList; 
 };

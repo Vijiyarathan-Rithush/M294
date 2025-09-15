@@ -1,4 +1,5 @@
-export type ButtonProperties =
-{
-    label: "Abbrechen" | "Absenden";
-};
+export interface ButtonProperties {
+  label: string     // <- vorher: "Abbrechen" | "Absenden"
+  type?: "button" | "submit" | "reset"
+  disabled?: boolean
+}

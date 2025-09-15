@@ -1,8 +1,9 @@
-import type { Control } from "react-hook-form";
+import type { SelectHTMLAttributes } from "react"
+import type { FieldError } from "react-hook-form"
 
-export type CountryProperties =
-{
-    control: Control<any>;
-    name: string;
-    label: string;
-};
+export interface CountryProperties extends SelectHTMLAttributes<HTMLSelectElement> {
+  id?: string
+  label: string
+  error?: FieldError
+  isValid?: boolean
+}
