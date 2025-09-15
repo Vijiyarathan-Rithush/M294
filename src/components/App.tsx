@@ -1,15 +1,13 @@
 import '/src/styles/App.css'
 import Modal from './Modal'
 import ModalForm from './ModalForm'
-function App() 
+function App()
 {
   return (
-    <>
-      <Modal>
-        <ModalForm />
-      </Modal>
-    </>
-  )
+    <Modal>
+      <ModalForm />
+    </Modal>
+  );
 }
 
-export default App
+export default App;

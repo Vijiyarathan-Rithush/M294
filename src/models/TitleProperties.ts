@@ -1,4 +1,4 @@
 export type TitleProperties =
 {
-    label: string;
-};
+    label: string
+}

@@ -19,7 +19,6 @@ function CountryDropdownField({ control, label, name }: CountryDropdownFieldProp
         {label}
         <span className="text-red-600">*</span>
       </label>
-
       <Controller
         name={name}
         control={control}

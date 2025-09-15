@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import type { ModalFormData } from "../../models/ModalFromData"
+import type { ModalFormData } from "../../models/ModalFormData"
 import { validationRules } from "../../utils/validation"
 
 export type ToastType = "success" | "error"

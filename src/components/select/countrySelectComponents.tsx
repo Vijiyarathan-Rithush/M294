@@ -1,7 +1,7 @@
 import { components } from "react-select";
 import { getFlagEmoji } from "../../utils/getFlagEmoji";
 
-export const OptionComponent = (props: any) => 
+export const OptionComponent = (props: any) =>
 {
   const code = props.data.value as string;
   return (
@@ -12,7 +12,7 @@ export const OptionComponent = (props: any) =>
   );
 };
 
-export const SingleValueComponent = (props: any) => 
+export const SingleValueComponent = (props: any) =>
 {
   const code = props.data.value as string;
   return (
