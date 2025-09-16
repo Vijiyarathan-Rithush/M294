@@ -5,9 +5,9 @@ import ButtonField from "./modalFormComponents/ButtonField";
 import Toast from "./ui/Toast";
 import PersonalSection from "./sections/PersonalSection";
 import AccountSection from "./sections/AccountSection";
-import AddressSection from "./sections/AddressLSection";
+import AddressSection from "./sections/AddressSection";
 import IdentitySection from "./sections/IdentitySection";
-import { useRegistrationForm } from "./hooks/useRegistrationFrom";
+import { useRegistrationForm } from "./hooks/useRegistrationForm";
 import type { ModalFormProperties } from "../models/ModalFormProperties";
 
 
