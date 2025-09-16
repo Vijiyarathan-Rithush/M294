@@ -3,8 +3,12 @@ import type { PhoneInputFieldProperties } from "../../models/PhoneInputPropertie
 function PhoneInputField({ label, id, error, isValid, className, ...rest }: PhoneInputFieldProperties)
 {
   const inputId = id ?? (rest.name as string);
-  const base = "w-full h-11 pl-12 pr-4 rounded-lg border bg-black text-sm text-white placeholder-gray-500";
-  const state = error ? "border-red-600 focus:ring-2 focus:ring-red-600 focus:border-red-600" : isValid ? "border-green-600 focus:ring-2 focus:ring-green-600 focus:border-green-600" : "border-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500";
+  const base = "w-full h-11 rounded-lg border bg-black pr-4 text-sm text-white placeholder-gray-400 focus:outline-none pl-12";
+  const state = error
+    ? "border-red-600 focus:ring-2 focus:ring-red-600 focus:border-red-600"
+    : isValid
+      ? "border-green-600 focus:ring-2 focus:ring-green-600 focus:border-green-600"
+      : "border-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500";
   return (
     <div className="w-full text-left">
       <label htmlFor={inputId} className="block text-sm font-medium text-gray-900 mb-1 ml-1.5">{label}</label>
