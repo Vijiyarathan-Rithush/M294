@@ -3,16 +3,9 @@ import { Controller } from "react-hook-form";
 import { useCountryOptions } from "../../utils/useCountryOptions";
 import { countrySelectStyles } from "../select/countrySelectStyles";
 import { OptionComponent, SingleValueComponent } from "../select/countrySelectComponents";
-import type { Control } from "react-hook-form";
-import type { ModalFormData } from "../../models/ModalFormData";
+import type { CountryDropdownFieldProperties } from "../../models/CountryDropdownFieldProperties";
 
-interface CountryDropdownFieldProps {
-  control: Control<ModalFormData>;
-  label: string;
-  name: keyof ModalFormData;
-}
-
-function CountryDropdownField({ control, label, name }: CountryDropdownFieldProps) {
+function CountryDropdownField({ control, label, name }: CountryDropdownFieldProperties) {
   const options = useCountryOptions();
 
   return (

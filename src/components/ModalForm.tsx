@@ -1,18 +1,18 @@
-import { FormProvider } from "react-hook-form"
-import Title from "./modalFormComponents/Title"
-import ButtonField from "./modalFormComponents/ButtonField"
-import Toast from "./ui/Toast"
-import PersonalSection from "./sections/PersonalSection"
-import AccountSection from "./sections/AccountSection"
-import AddressSection from "./sections/AddressLSection"
-import IdentitySection from "./sections/IdentitySection"
-import { useRegistrationForm } from "../components/hooks/useRegistrationFrom"
 
-interface ModalFormProps {
-    setOpen: (open: boolean) => void
-}
+import { FormProvider } from "react-hook-form";
+import Title from "./modalFormComponents/Title";
+import ButtonField from "./modalFormComponents/ButtonField";
+import Toast from "./ui/Toast";
+import PersonalSection from "./sections/PersonalSection";
+import AccountSection from "./sections/AccountSection";
+import AddressSection from "./sections/AddressLSection";
+import IdentitySection from "./sections/IdentitySection";
+import { useRegistrationForm } from "./hooks/useRegistrationFrom";
+import type { ModalFormProperties } from "../models/ModalFormProperties";
 
-function ModalForm({ setOpen }: ModalFormProps)
+
+
+function ModalForm({ setOpen }: ModalFormProperties)
 {
     const { form, onSubmit, toast } = useRegistrationForm();
     const { handleSubmit, formState: { isSubmitting, isValid } } = form;

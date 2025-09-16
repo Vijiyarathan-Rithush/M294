@@ -1,5 +1,4 @@
 import type { InputFieldProperties } from "../../models/InputFieldProperties"
-import type { ModalFormProperties } from "../../models/ModalFormProperties"
 import { UserIcon, CalendarIcon, KeyIcon } from "@heroicons/react/16/solid"
 
 function InputField({ label, id, type, required, placeholder, minLength, maxLength, error, isValid, className, ...rest }: InputFieldProperties)
@@ -41,7 +40,7 @@ function InputField({ label, id, type, required, placeholder, minLength, maxLeng
   );
 }
 
-function getIconByType(type?: ModalFormProperties["type"])
+function getIconByType(type?: "date" | "password" | "text" | "email" | "tel")
 {
   switch (type)
   {

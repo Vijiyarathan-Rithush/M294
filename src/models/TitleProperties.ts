@@ -1,4 +1,3 @@
-export type TitleProperties =
-{
-    label: string
+export interface TitleProperties {
+    label: string;
 }

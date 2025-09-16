@@ -96,5 +96,9 @@ export const validationRules = {
       if (totalSize > 5 * 1024 * 1024) return "Gesamtgröße max. 5MB";
       return true;
     }
+  },
+  terms: {
+    required: "Bitte akzeptieren Sie die AGB",
+    validate: (v: boolean) => v === true || "Bitte akzeptieren Sie die AGB"
   }
 };
