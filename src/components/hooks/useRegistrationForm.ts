@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 import type { ModalFormData } from "../../models/ModalFormData";
 import { validationRules } from "../../utils/validation";
 import type { ToastData } from "../../models/ToastData";
@@ -56,10 +57,33 @@ export function useRegistrationForm()
           setToast({ type: "error", message: "Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!" });
           return false;
         }
-        fd.append("idConfirmation", files[0]);
+        // Maximal 5 Dateien, alle einzeln anhängen
+        for (let i = 0; i < Math.min(files.length, 5); i++)
+        {
+          fd.append("idConfirmation", files[i]);
+        }
       }
 
-      const res = await fetch("http://localhost:3002/login", { method: "POST", body: fd });
+      let res;
+      try
+      {
+        res = await axios.post("http://localhost:3002/login", fd, {
+          headers: { "Content-Type": "multipart/form-data" }
+        });
+      }
+      catch (err)
+      {
+        const error = err as any;
+        if (error.response)
+        {
+          res = error.response;
+        }
+        else
+        {
+          setToast({ type: "error", message: "Netzwerkfehler – später erneut versuchen" });
+          return false;
+        }
+      }
 
       if (res.status === 200)
       {
@@ -75,7 +99,7 @@ export function useRegistrationForm()
         let msg = "Benutzername oder E-Mail bereits vergeben.";
         try
         {
-          const data = await res.json();
+          const data = res.data;
           if (data && data.field === "email") msg = "E-Mail ist bereits vergeben.";
           else if (data && data.field === "username") msg = "Benutzername ist bereits vergeben.";
           else if (data && data.message) msg = data.message;
