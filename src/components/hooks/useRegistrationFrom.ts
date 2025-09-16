@@ -38,7 +38,7 @@ export function useRegistrationForm() {
       const files = data.idConfirmation as unknown as FileList
       if (files?.[0]) fd.append("idConfirmation", files[0])
 
-      const res = await fetch("http://localhost:3002/register", { method: "POST", body: fd })
+      const res = await fetch("http://localhost:3002/login", { method: "POST", body: fd })
       if (res.status === 200) setToast({ type: "success", message: "Registrierung erfolgreich" })
       else if (res.status === 405) setToast({ type: "error", message: "Benutzername bereits vergeben" })
       else setToast({ type: "error", message: `Serverfehler (${res.status})` })
