@@ -84,11 +84,16 @@ export const validationRules = {
   fileUpload: {
     required: "Ausweisdokument ist erforderlich",
     validate: (fl: FileList) => {
-      if (!fl || fl.length === 0) return "Bitte ein Dokument hochladen";
-      const f = fl[0];
+      if (!fl || fl.length === 0) return "Bitte mindestens ein Dokument hochladen";
+      if (fl.length > 5) return "Maximal 5 Dateien erlaubt";
+      let totalSize = 0;
       const ok = ["image/jpeg", "image/jpg", "image/png", "application/pdf"];
-      if (!ok.includes(f.type)) return "Nur JPG, PNG oder PDF";
-      if (f.size > 5 * 1024 * 1024) return "Maximal 5MB";
+      for (let i = 0; i < fl.length; i++) {
+        const f = fl[i];
+        if (!ok.includes(f.type)) return "Nur JPG, PNG oder PDF";
+        totalSize += f.size;
+      }
+      if (totalSize > 5 * 1024 * 1024) return "Gesamtgröße max. 5MB";
       return true;
     }
   }

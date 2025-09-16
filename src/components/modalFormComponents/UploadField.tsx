@@ -1,14 +1,30 @@
 import type { UploadFieldProperties } from "../../models/UploadFieldProperties";
+import { useState } from "react";
 
 function UploadField({label, id, ...rest}: UploadFieldProperties)
 {
     const inputId = id ?? (rest.name as string | undefined);
-        return (
-            <div className="w-full text-left">
-                <label htmlFor={inputId} className="block text-sm font-medium text-gray-900 mb-1 ml-1.5">{label}<span className="text-red-600">*</span></label>
-                <input id={inputId} type="file" className="file-input file-input-bordered w-full" {...rest} />
-            </div>
-        );
+    const [fileError, setFileError] = useState<string | null>(null);
+
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+        const files = e.target.files;
+        if (files && files.length > 5) {
+            setFileError("Maximal 5 Dateien erlaubt!");
+            // Entferne Auswahl (optional):
+            e.target.value = "";
+        } else {
+            setFileError(null);
+        }
+        if (rest.onChange) rest.onChange(e);
+    }
+
+    return (
+        <div className="w-full text-left">
+            <label htmlFor={inputId} className="block text-sm font-medium text-gray-900 mb-1 ml-1.5">{label}<span className="text-red-600">*</span></label>
+            <input id={inputId} type="file" className="file-input file-input-bordered w-full" multiple {...rest} onChange={handleChange} />
+            {fileError && <div className="text-red-600 text-xs mt-1 ml-1.5">{fileError}</div>}
+        </div>
+    );
 }
 
 export default UploadField;
