@@ -43,8 +43,15 @@ export function useRegistrationForm()
         fd.append("password", data.password);
 
         const files = data.idConfirmation as unknown as FileList;
-        if (files?.[0]) 
-        {
+        if (files && files.length > 0) {
+          let totalSize = 0;
+          for (let i = 0; i < files.length; i++) {
+            totalSize += files[i].size;
+          }
+          if (totalSize > 5 * 1024 * 1024) {
+            setToast({ type: "error", message: "Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!" });
+            return;
+          }
           fd.append("idConfirmation", files[0]);
         }
 

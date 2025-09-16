@@ -10,11 +10,21 @@ function UploadField({label, id, ...rest}: UploadFieldProperties)
         const files = e.target.files;
         if (files && files.length > 5) {
             setFileError("Maximal 5 Dateien erlaubt!");
-            // Entferne Auswahl (optional):
             e.target.value = "";
-        } else {
-            setFileError(null);
+            return;
         }
+        if (files && files.length > 0) {
+            let totalSize = 0;
+            for (let i = 0; i < files.length; i++) {
+                totalSize += files[i].size;
+            }
+            if (totalSize > 5 * 1024 * 1024) {
+                setFileError("Die Gesamtgröße der Dateien darf 5MB nicht überschreiten!");
+                e.target.value = "";
+                return;
+            }
+        }
+        setFileError(null);
         if (rest.onChange) rest.onChange(e);
     }
 
