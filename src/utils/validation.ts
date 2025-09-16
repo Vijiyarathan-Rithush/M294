@@ -116,7 +116,7 @@ export const validationRules =
         if (!ok.includes(f.type)) return "Nur JPG, PNG oder PDF";
         totalSize += f.size;
       }
-      if (totalSize > 5 * 1024 * 1024) return "Gesamtgröße max. 5MB";
+      if (totalSize > 5 * 1024 * 1024) return "Gesamtgrösse max. 5MB";
       return true;
     }
   },

@@ -19,7 +19,7 @@ function UploadField({label, id, ...rest}: UploadFieldProperties)
     const [fileError, setFileError] = useState<string | null>(null);
 
     /**
-     * Prüft die ausgewählten Dateien und zeigt Fehler an, wenn zu viele oder zu große Dateien gewählt wurden.
+     * Prüft die ausgewählten Dateien und zeigt Fehler an, wenn zu viele oder zu grosse Dateien gewählt wurden.
      */
     function handleChange(e: React.ChangeEvent<HTMLInputElement>)
     {
@@ -39,7 +39,7 @@ function UploadField({label, id, ...rest}: UploadFieldProperties)
             }
             if (totalSize > 5 * 1024 * 1024)
             {
-                setFileError("Die Gesamtgröße der Dateien darf 5MB nicht überschreiten!");
+                setFileError("Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!");
                 e.target.value = "";
                 return;
             }

@@ -9,6 +9,8 @@ export type ModalFormData =
     username: string;
     /** Dein Passwort */
     password: string;
+    /** Das Token vom Google reCAPTCHA */
+    captchaToken: string;
     /** Dein Geburtsdatum (Format: YYYY-MM-DD) */
     dateOfBirth: string;
     /** Deine E-Mail-Adresse */

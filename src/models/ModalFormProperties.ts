@@ -3,6 +3,6 @@
  */
 export interface ModalFormProperties
 {
-    /** Funktion zum Öffnen/Schließen des Modals */
+    /** Funktion zum Öffnen/Schliessen des Modals */
     setOpen: (open: boolean) => void;
 }

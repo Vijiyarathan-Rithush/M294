@@ -7,6 +7,7 @@ import PersonalSection from "./sections/PersonalSection";
 import AccountSection from "./sections/AccountSection";
 import AddressSection from "./sections/AddressSection";
 import IdentitySection from "./sections/IdentitySection";
+import Captcha from "./Captcha";
 import { useRegistrationForm } from "./hooks/useRegistrationForm";
 
 import { useNavigate } from "react-router-dom";
@@ -21,7 +22,7 @@ interface ModalFormProps {
 /**
  * Das Registrierungsformular im Modal. Beinhaltet alle Eingabefelder und Absende-Logik.
  *
- * @param {function} setOpen - Funktion zum Öffnen/Schließen des Modals
+ * @param {function} setOpen - Funktion zum Öffnen/Schliessen des Modals
  * @returns {JSX.Element} Das Formular
  */
 function ModalForm({ setOpen }: ModalFormProps) {
@@ -49,6 +50,7 @@ function ModalForm({ setOpen }: ModalFormProps) {
                     <AccountSection />
                     <AddressSection />
                     <IdentitySection />
+                    <Captcha />
                     <div className="md:col-span-2 flex flex-col gap-2 sm:flex-row sm:justify-between">
                         <ButtonField label="Abbrechen" onClick={() => setOpen(false)} tabIndex={99} />
                         <ButtonField label={isSubmitting ? "Sende..." : "Absenden"} disabled={isSubmitting || !isValid} tabIndex={1} />
