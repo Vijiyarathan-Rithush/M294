@@ -31,8 +31,8 @@ function ModalForm({ setOpen }: ModalFormProps)
                     <AddressSection />
                     <IdentitySection />
                     <div className="md:col-span-2 flex flex-col gap-2 sm:flex-row sm:justify-between">
-                        <ButtonField label="Abbrechen" onClick={() => setOpen(false)} />
-                        <ButtonField label={isSubmitting ? "Sende..." : "Absenden"} disabled={isSubmitting || !isValid} />
+                        <ButtonField label="Abbrechen" onClick={() => setOpen(false)} tabIndex={99} />
+                        <ButtonField label={isSubmitting ? "Sende..." : "Absenden"} disabled={isSubmitting || !isValid} tabIndex={1} />
                     </div>
                 </form>
             </FormProvider>
