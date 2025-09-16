@@ -53,7 +53,9 @@ export function useRegistrationForm()
         if (res.status === 200) 
         {
           setToast({ type: "success", message: "Registrierung erfolgreich!" });
-          if (setOpen) setOpen(false);
+          setTimeout(() => {
+            if (setOpen) setOpen(false);
+          }, 2000); // Modal schließt sich nach 2 Sekunden
         }
         else if (res.status === 405) 
         {
