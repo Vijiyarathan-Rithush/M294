@@ -48,16 +48,18 @@ export function useRegistrationForm()
       if (files && files.length > 0)
       {
         let totalSize = 0;
+
         for (let i = 0; i < files.length; i++)
         {
           totalSize += files[i].size;
         }
+
         if (totalSize > 5 * 1024 * 1024)
         {
           setToast({ type: "error", message: "Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!" });
           return false;
         }
-        // Maximal 5 Dateien, alle einzeln anhängen
+        
         for (let i = 0; i < Math.min(files.length, 5); i++)
         {
           fd.append("idConfirmation", files[i]);
