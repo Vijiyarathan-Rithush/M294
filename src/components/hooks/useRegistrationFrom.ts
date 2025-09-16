@@ -65,7 +65,9 @@ export function useRegistrationForm()
             if (data && data.field === "email") msg = "E-Mail ist bereits vergeben.";
             else if (data && data.field === "username") msg = "Benutzername ist bereits vergeben.";
             else if (data && data.message) msg = data.message;
-          } catch {}
+          } catch {
+            // Fehler beim Parsen ignorieren
+          }
           setToast({ type: "error", message: msg });
         }
         else 

@@ -1,6 +1,6 @@
 import type { FieldError } from "react-hook-form";
 
-export interface InputFieldProperties {
+export interface InputFieldProperties extends React.InputHTMLAttributes<HTMLInputElement> {
     label: string;
     id?: string;
     type?: "password" | "email" | "text" | "tel" | "date";
@@ -12,5 +12,4 @@ export interface InputFieldProperties {
     isValid?: boolean;
     className?: string;
     name?: string;
-    [key: string]: any;
 }

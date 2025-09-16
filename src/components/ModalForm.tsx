@@ -17,7 +17,7 @@ function ModalForm({ setOpen }: ModalFormProperties)
     const { form, onSubmit, toast } = useRegistrationForm();
     const { handleSubmit, formState: { isSubmitting, isValid } } = form;
     // Wrapper, damit setOpen übergeben werden kann
-    const handleFormSubmit = (data: any) => onSubmit(data, setOpen);
+    const handleFormSubmit = (data: import("../models/ModalFormData").ModalFormData) => onSubmit(data, setOpen);
     return (
         <>
             <Toast toast={toast} />
