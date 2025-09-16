@@ -3,7 +3,7 @@ import InputField from "../modalFormComponents/InputField"
 import UploadField from "../modalFormComponents/UploadField"
 import type { ModalFormData } from "../../models/ModalFormData"
 import { validationRules } from "../../utils/validation"
-
+import AGB from "../AGB"
 export default function IdentitySection()
 {
   const { register, formState: { errors, dirtyFields } } = useFormContext<ModalFormData>()
@@ -11,6 +11,7 @@ export default function IdentitySection()
     <>
       <InputField label="Birthday" required id="dateOfBirth" type="date" {...register("dateOfBirth", validationRules.dateOfBirth)} error={errors.dateOfBirth} isValid={!!dirtyFields.dateOfBirth && !errors.dateOfBirth} />
       <UploadField label="Upload ID card (PNG/JPG/PDF, max. 5MB)" accept=".png,.jpg,.jpeg,.pdf" {...register("idConfirmation", validationRules.fileUpload)} error={errors.idConfirmation} isValid={!!dirtyFields.idConfirmation && !errors.idConfirmation} />
+      <AGB register={register} errors={errors} />
     </>
   );
 }
