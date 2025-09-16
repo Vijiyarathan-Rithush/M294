@@ -28,6 +28,22 @@ function ModalForm({ setOpen }: ModalFormProps)
                     <AccountSection />
                     <AddressSection />
                     <IdentitySection />
+                    <div className="md:col-span-2 flex flex-col gap-2 mb-2">
+                        <div className="flex items-center">
+                            <input
+                                type="checkbox"
+                                id="agbAccepted"
+                                {...form.register("agbAccepted", { required: "Bitte akzeptieren Sie die AGB." })}
+                                className="mr-2"
+                            />
+                            <label htmlFor="agbAccepted" className="text-sm select-none text-black">
+                                Ich akzeptiere die <a href="#" className="underline text-blue-600">AGB</a> <span className="text-red-500">*</span>
+                            </label>
+                        </div>
+                        {form.formState.errors.agbAccepted && (
+                            <span className="text-red-500 text-xs ml-1">{form.formState.errors.agbAccepted.message as string}</span>
+                        )}
+                    </div>
                     <div className="md:col-span-2 flex flex-col gap-2 sm:flex-row sm:justify-between">
                         <ButtonField label="Abbrechen" onClick={() => setOpen(false)} />
                         <ButtonField label={isSubmitting ? "Sende..." : "Absenden"} disabled={isSubmitting || !isValid} />

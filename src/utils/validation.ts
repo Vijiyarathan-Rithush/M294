@@ -71,14 +71,22 @@ export const validationRules = {
   },
   dateOfBirth: {
     required: "Geburtsdatum ist erforderlich",
+    pattern: {
+      value: /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.(19|20)\d\d$/,
+      message: "Format: TT.MM.JJJJ"
+    },
     validate: (v: string) => {
       if (/[<>]/.test(v) || /<[^>]*>/.test(v)) return "Keine spitzen Klammern oder HTML-Tags erlaubt";
+      // Format TT.MM.JJJJ prüfen und Alter berechnen
+      const match = v.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);
+      if (!match) return "Format: TT.MM.JJJJ";
+      const [_, day, month, year] = match;
+      const b = new Date(Number(year), Number(month) - 1, Number(day));
       const t = new Date();
-      const b = new Date(v);
-      const age = t.getFullYear() - b.getFullYear();
+      let age = t.getFullYear() - b.getFullYear();
       const m = t.getMonth() - b.getMonth();
-      const d = t.getDate() - b.getDate();
-      return (age > 18 || (age === 18 && (m > 0 || (m === 0 && d >= 0)))) || "Mindestens 18 Jahre";
+      if (m < 0 || (m === 0 && t.getDate() < b.getDate())) age--;
+      return age >= 18 || "Mindestens 18 Jahre";
     }
   },
   fileUpload: {
