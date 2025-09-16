@@ -46,9 +46,8 @@ export function useRegistrationForm()
       fd.append("postcode", data.postcode);
       fd.append("country", data.country as string);
       fd.append("address", data.address);
-  fd.append("dateOfBirth", data.dateOfBirth);
-  fd.append("password", data.password);
-  fd.append("captchaToken", data.captchaToken);
+      fd.append("dateOfBirth", data.dateOfBirth);
+      fd.append("password", data.password);
 
       const files = data.idConfirmation as unknown as FileList;
       if (files && files.length > 0)
