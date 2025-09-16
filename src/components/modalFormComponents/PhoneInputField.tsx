@@ -11,7 +11,7 @@ function PhoneInputField({ label, id, error, isValid, className, ...rest }: Phon
       : "border-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500";
   return (
     <div className="w-full text-left">
-      <label htmlFor={inputId} className="block text-sm font-medium text-gray-900 mb-1 ml-1.5">{label}</label>
+      <label htmlFor={inputId} className="block text-sm font-medium text-gray-900 mb-1 ml-1.5">{label}<span className="text-red-600">*</span></label>
       <div className="relative flex items-center">
         <span className="absolute left-3 text-gray-400 select-none">+41</span>
         <input id={inputId} type="tel" aria-invalid={!!error} aria-describedby={`${inputId}-error`} {...rest} className={`${base} ${state} ${className ?? ""}`} />

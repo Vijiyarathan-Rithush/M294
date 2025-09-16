@@ -51,15 +51,22 @@ export function useRegistrationForm()
 
         if (res.status === 200) 
         {
-          setToast({ type: "success", message: "Registrierung erfolgreich" });
+          setToast({ type: "success", message: "Registrierung erfolgreich!" });
         }
         else if (res.status === 405) 
         {
-          setToast({ type: "error", message: "Benutzername bereits vergeben" });
+          let msg = "Benutzername oder E-Mail bereits vergeben.";
+          try {
+            const data = await res.json();
+            if (data && data.field === "email") msg = "E-Mail ist bereits vergeben.";
+            else if (data && data.field === "username") msg = "Benutzername ist bereits vergeben.";
+            else if (data && data.message) msg = data.message;
+          } catch {}
+          setToast({ type: "error", message: msg });
         }
         else 
         {
-          setToast({ type: "error", message: `Serverfehler (${res.status})` });
+          setToast({ type: "error", message: `Unbekannter Fehler (${res.status}) – bitte erneut versuchen.` });
         }
       } 
       catch 
