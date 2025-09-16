@@ -14,13 +14,15 @@ interface ModalFormProps {
 
 function ModalForm({ setOpen }: ModalFormProps)
 {
-    const { form, onSubmit, toast } = useRegistrationForm()
-    const { handleSubmit, formState: { isSubmitting, isValid } } = form
+    const { form, onSubmit, toast } = useRegistrationForm();
+    const { handleSubmit, formState: { isSubmitting, isValid } } = form;
+    // Wrapper, damit setOpen übergeben werden kann
+    const handleFormSubmit = (data: any) => onSubmit(data, setOpen);
     return (
         <>
             <Toast toast={toast} />
             <FormProvider {...form}>
-                <form onSubmit={handleSubmit(onSubmit)} className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto max-h-[80vh] md:max-h-[85vh]">
+                <form onSubmit={handleSubmit(handleFormSubmit)} className="w-full grid grid-cols-1 md:grid-cols-2 gap-4 overflow-y-auto max-h-[80vh] md:max-h-[85vh]">
                     <div className="md:col-span-2">
                         <Title label="Registrierungsformular" />
                     </div>
@@ -35,7 +37,7 @@ function ModalForm({ setOpen }: ModalFormProps)
                 </form>
             </FormProvider>
         </>
-    )
+    );
 }
 
 export default ModalForm;

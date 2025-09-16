@@ -25,7 +25,8 @@ export function useRegistrationForm()
     validate: (v: string) => v === getValues("password") || "Passwörter stimmen nicht überein",
   };
 
-  const onSubmit = async (data: ModalFormData) => 
+  // setOpen als optionales Argument
+  const onSubmit = async (data: ModalFormData, setOpen?: (open: boolean) => void) => 
   {
       try 
       {
@@ -52,6 +53,7 @@ export function useRegistrationForm()
         if (res.status === 200) 
         {
           setToast({ type: "success", message: "Registrierung erfolgreich!" });
+          if (setOpen) setOpen(false);
         }
         else if (res.status === 405) 
         {
