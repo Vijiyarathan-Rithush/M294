@@ -1,12 +1,22 @@
-import '/src/styles/App.css'
-import Modal from './Modal'
-import ModalForm from './ModalForm'
-function App()
-{
+
+import '/src/styles/App.css';
+import Modal from './Modal';
+import ModalForm from './ModalForm';
+import Success from './Success';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+
+function App() {
   return (
-    <Modal>
-      {({ setOpen }) => <ModalForm setOpen={setOpen} />}
-    </Modal>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={
+          <Modal>
+            {({ setOpen }) => <ModalForm setOpen={setOpen} />}
+          </Modal>
+        } />
+        <Route path="/success" element={<Success />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

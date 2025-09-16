@@ -26,70 +26,62 @@ export function useRegistrationForm()
   };
 
   // setOpen als optionales Argument
-  const onSubmit = async (data: ModalFormData, setOpen?: (open: boolean) => void) => 
-  {
-      try 
-      {
-        const fd = new FormData();
-        fd.append("name", data.name);
-        fd.append("username", data.username);
-        fd.append("email", data.email);
-        fd.append("phoneNumber", `+41${data.phoneNumber}`);
-        fd.append("city", data.city);
-        fd.append("postcode", data.postcode);
-        fd.append("country", data.country as string);
-        fd.append("address", data.address);
-        fd.append("dateOfBirth", data.dateOfBirth);
-        fd.append("password", data.password);
+  const onSubmit = async (data: ModalFormData, setOpen?: (open: boolean) => void): Promise<boolean> => {
+    let success = false;
+    try {
+      const fd = new FormData();
+      fd.append("name", data.name);
+      fd.append("username", data.username);
+      fd.append("email", data.email);
+      fd.append("phoneNumber", `+41${data.phoneNumber}`);
+      fd.append("city", data.city);
+      fd.append("postcode", data.postcode);
+      fd.append("country", data.country as string);
+      fd.append("address", data.address);
+      fd.append("dateOfBirth", data.dateOfBirth);
+      fd.append("password", data.password);
 
-        const files = data.idConfirmation as unknown as FileList;
-        if (files && files.length > 0) {
-          let totalSize = 0;
-          for (let i = 0; i < files.length; i++) {
-            totalSize += files[i].size;
-          }
-          if (totalSize > 5 * 1024 * 1024) {
-            setToast({ type: "error", message: "Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!" });
-            return;
-          }
-          fd.append("idConfirmation", files[0]);
+      const files = data.idConfirmation as unknown as FileList;
+      if (files && files.length > 0) {
+        let totalSize = 0;
+        for (let i = 0; i < files.length; i++) {
+          totalSize += files[i].size;
         }
-
-        const res = await fetch("http://localhost:3002/login", { method: "POST", body: fd });
-
-        if (res.status === 200) 
-        {
-          setToast({ type: "success", message: "Registrierung erfolgreich!" });
-          setTimeout(() => {
-            if (setOpen) setOpen(false);
-          }, 2000); // Modal schließt sich nach 2 Sekunden
+        if (totalSize > 5 * 1024 * 1024) {
+          setToast({ type: "error", message: "Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!" });
+          return false;
         }
-        else if (res.status === 405) 
-        {
-          let msg = "Benutzername oder E-Mail bereits vergeben.";
-          try {
-            const data = await res.json();
-            if (data && data.field === "email") msg = "E-Mail ist bereits vergeben.";
-            else if (data && data.field === "username") msg = "Benutzername ist bereits vergeben.";
-            else if (data && data.message) msg = data.message;
-          } catch {
-            // Fehler beim Parsen ignorieren
-          }
-          setToast({ type: "error", message: msg });
-        }
-        else 
-        {
-          setToast({ type: "error", message: `Unbekannter Fehler (${res.status}) – bitte erneut versuchen.` });
-        }
-      } 
-      catch 
-      {
-        setToast({ type: "error", message: "Netzwerkfehler – später erneut versuchen" });
-      } 
-      finally 
-      {
-        setTimeout(() => setToast(null), 4000);
+        fd.append("idConfirmation", files[0]);
       }
+
+      const res = await fetch("http://localhost:3002/login", { method: "POST", body: fd });
+
+      if (res.status === 200) {
+        setToast({ type: "success", message: "Registrierung erfolgreich!" });
+        setTimeout(() => {
+          if (setOpen) setOpen(false);
+        }, 2000);
+        success = true;
+      } else if (res.status === 405) {
+        let msg = "Benutzername oder E-Mail bereits vergeben.";
+        try {
+          const data = await res.json();
+          if (data && data.field === "email") msg = "E-Mail ist bereits vergeben.";
+          else if (data && data.field === "username") msg = "Benutzername ist bereits vergeben.";
+          else if (data && data.message) msg = data.message;
+        } catch {
+          // Fehler beim Parsen ignorieren
+        }
+        setToast({ type: "error", message: msg });
+      } else {
+        setToast({ type: "error", message: `Unbekannter Fehler (${res.status}) – bitte erneut versuchen.` });
+      }
+    } catch {
+      setToast({ type: "error", message: "Netzwerkfehler – später erneut versuchen" });
+    } finally {
+      setTimeout(() => setToast(null), 4000);
+    }
+    return success;
   };
   return { form, onSubmit, confirmPasswordRule, toast, setToast, validationRules };
 }

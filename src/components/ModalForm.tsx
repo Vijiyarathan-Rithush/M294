@@ -8,16 +8,27 @@ import AccountSection from "./sections/AccountSection";
 import AddressSection from "./sections/AddressSection";
 import IdentitySection from "./sections/IdentitySection";
 import { useRegistrationForm } from "./hooks/useRegistrationForm";
-import type { ModalFormProperties } from "../models/ModalFormProperties";
+
+import { useNavigate } from "react-router-dom";
 
 
 
-function ModalForm({ setOpen }: ModalFormProperties)
-{
+import type { ModalFormData } from "../models/ModalFormData";
+interface ModalFormProps {
+    setOpen: (open: boolean) => void;
+}
+
+function ModalForm({ setOpen }: ModalFormProps) {
     const { form, onSubmit, toast } = useRegistrationForm();
     const { handleSubmit, formState: { isSubmitting, isValid } } = form;
-    // Wrapper, damit setOpen übergeben werden kann
-    const handleFormSubmit = (data: import("../models/ModalFormData").ModalFormData) => onSubmit(data, setOpen);
+    const navigate = useNavigate();
+    // Wrapper, damit setOpen und navigate übergeben werden kann
+    const handleFormSubmit = async (data: ModalFormData) => {
+        const success = await onSubmit(data, setOpen);
+        if (success) {
+            navigate("/success");
+        }
+    };
     return (
         <>
             <Toast toast={toast} />
