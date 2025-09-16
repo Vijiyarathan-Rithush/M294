@@ -55,7 +55,7 @@ export function useRegistrationForm()
         }
         else if (res.status === 405) 
         {
-          setToast({ type: "error", message: "Benutzername bereits vergeben" });
+          setToast({ type: "error", message: "E-Mail bereits vergeben" });
         }
         else 
         {
