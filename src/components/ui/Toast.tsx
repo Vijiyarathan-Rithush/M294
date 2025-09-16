@@ -1,4 +1,4 @@
-import type { ToastData } from "../../components/hooks/useRegistrationFrom"
+import type { ToastData } from "../../models/ToastData";
 
 export default function Toast({ toast }: { toast: ToastData | null })
 {

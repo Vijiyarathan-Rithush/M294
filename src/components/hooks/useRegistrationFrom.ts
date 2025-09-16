@@ -21,7 +21,7 @@ export function useRegistrationForm()
 
   const confirmPasswordRule = 
   {
-    ...validationRules.confirmPassword,
+    required: "Bitte bestätigen Sie Ihr Passwort",
     validate: (v: string) => v === getValues("password") || "Passwörter stimmen nicht überein",
   };
 

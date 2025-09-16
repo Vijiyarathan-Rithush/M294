@@ -1,9 +1,9 @@
 import { components } from "react-select";
+import type { GroupBase, OptionProps, SingleValueProps } from "react-select";
 import { getFlagEmoji } from "../../utils/getFlagEmoji";
 
-export const OptionComponent = (props: any) =>
-{
-  const code = props.data.value as string;
+export const OptionComponent = (props: OptionProps<{ value: string; label: string }, false, GroupBase<{ value: string; label: string }>>) => {
+  const code = props.data.value;
   return (
     <components.Option {...props}>
       <span className="mr-2">{getFlagEmoji(code)}</span>
@@ -12,9 +12,8 @@ export const OptionComponent = (props: any) =>
   );
 };
 
-export const SingleValueComponent = (props: any) =>
-{
-  const code = props.data.value as string;
+export const SingleValueComponent = (props: SingleValueProps<{ value: string; label: string }, false, GroupBase<{ value: string; label: string }>>) => {
+  const code = props.data.value;
   return (
     <components.SingleValue {...props}>
       <span className="mr-2">{getFlagEmoji(code)}</span>

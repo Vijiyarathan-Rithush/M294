@@ -1,49 +1,40 @@
-export const countrySelectStyles = 
-{
-  control: (provided: any) => 
-  ({
-    ...provided,
+import type { StylesConfig } from "react-select";
+
+export const countrySelectStyles: StylesConfig<{ value: string; label: string }, false> = {
+  control: (base) => ({
+    ...base,
     backgroundColor: "black",
     borderColor: "gray",
     color: "white",
     minHeight: "44px",
     boxShadow: "none"
   }),
-  menu: (provided: any) => 
-  ({
-    ...provided,
+  menu: (base) => ({
+    ...base,
     backgroundColor: "black",
     color: "white"
   }),
-  option: (provided: any, state: any) => 
-  ({
-    ...provided,
-    backgroundColor: state.isFocused ? "#1f2937" : "black", // Tailwind gray-800
+  option: (base, state) => ({
+    ...base,
+    backgroundColor: state.isFocused ? "#1f2937" : "black",
     color: "white",
     cursor: "pointer"
   }),
-  singleValue: (provided: any) => 
-  ({
-    ...provided,
+  singleValue: (base) => ({
+    ...base,
     color: "white"
   }),
-  input: (provided: any) => 
-  ({
-    ...provided,
+  input: (base) => ({
+    ...base,
     color: "white"
   }),
-  placeholder: (provided: any) => 
-  ({
-    ...provided,
-    color: "#9ca3af" // Tailwind gray-400
+  placeholder: (base) => ({
+    ...base,
+    color: "#9ca3af"
   }),
-  dropdownIndicator: (provided: any) => 
-  ({
-    ...provided,
+  dropdownIndicator: (base) => ({
+    ...base,
     color: "white"
   }),
-  indicatorSeparator: () =>  
-  ({
-    display: "none"
-  })
+  indicatorSeparator: () => ({ display: 'none' })
 };
