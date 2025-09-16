@@ -1,5 +1,10 @@
+/**
+ * Option für Auswahlfelder (z.B. Land)
+ */
 export type Option =
 {
-    label: string
-    value: string
+    /** Der angezeigte Text */
+    label: string;
+    /** Der Wert, der gespeichert wird */
+    value: string;
 }

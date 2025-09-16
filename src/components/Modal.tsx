@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import type { ModalProperties } from "../models/ModalProperties";
-
+/**
+ * Zeigt ein Modal-Fenster an. Öffnet sich beim Klick auf den Button.
+ *
+ * @param {function} children - Funktion, die das Modal-Inhalt rendert
+ * @returns {JSX.Element} Das Modal
+ */
 export function Modal({ children }: ModalProperties)
 {
     const [isOpen, setOpen] = useState(false);

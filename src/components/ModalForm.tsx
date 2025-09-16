@@ -18,6 +18,12 @@ interface ModalFormProps {
     setOpen: (open: boolean) => void;
 }
 
+/**
+ * Das Registrierungsformular im Modal. Beinhaltet alle Eingabefelder und Absende-Logik.
+ *
+ * @param {function} setOpen - Funktion zum Öffnen/Schließen des Modals
+ * @returns {JSX.Element} Das Formular
+ */
 function ModalForm({ setOpen }: ModalFormProps) {
     const { form, onSubmit, toast } = useRegistrationForm();
         const { handleSubmit, formState: { isSubmitting, isValid } } = form;

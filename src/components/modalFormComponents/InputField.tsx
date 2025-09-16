@@ -1,6 +1,21 @@
-import type { InputFieldProperties } from "../../models/InputFieldProperties"
-import { UserIcon, CalendarIcon, KeyIcon } from "@heroicons/react/16/solid"
-
+import { CalendarIcon, KeyIcon, UserIcon } from "@heroicons/react/24/outline";
+import type { InputFieldProperties } from "../../models/InputFieldProperties";
+/**
+ * Zeigt ein Eingabefeld für Text, E-Mail, Passwort usw. an.
+ * Zeigt Fehler und Icons an, wenn nötig.
+ *
+ * @param {string} label - Der Text des Labels
+ * @param {string} [id] - Die ID des Feldes
+ * @param {string} type - Der Typ des Feldes (z.B. text, email, password)
+ * @param {boolean} required - Ist das Feld erforderlich?
+ * @param {string} [placeholder] - Platzhaltertext
+ * @param {number} [minLength] - Minimale Länge
+ * @param {number} [maxLength] - Maximale Länge
+ * @param {any} [error] - Fehlerobjekt
+ * @param {boolean} [isValid] - Ist das Feld gültig?
+ * @param {string} [className] - Zusätzliche CSS-Klasse
+ * @returns {JSX.Element} Das Eingabefeld
+ */
 function InputField({ label, id, type, required, placeholder, minLength, maxLength, error, isValid, className, ...rest }: InputFieldProperties)
 {
   const inputId = (id ?? (rest.name as string)) || "input";

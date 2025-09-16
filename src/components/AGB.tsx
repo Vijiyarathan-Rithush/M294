@@ -1,6 +1,13 @@
 import type { AGBProperties } from "../models/AGBProperties";
 import { validationRules } from "../utils/validation";
 
+/**
+ * Zeigt die AGB-Checkbox und Fehlermeldung an.
+ *
+ * @param {any} register - Die register-Funktion von react-hook-form
+ * @param {any} errors - Fehlerobjekt von react-hook-form
+ * @returns {JSX.Element} Die AGB-Checkbox
+ */
 export default function AGB({ register, errors }: AGBProperties)
 {
   return (

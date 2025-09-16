@@ -2,6 +2,11 @@ import Modal from "./Modal";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+/**
+ * Zeigt die Erfolgsseite nach abgeschlossener Registrierung.
+ *
+ * @returns {JSX.Element} Die Erfolgsmeldung
+ */
 export default function Success() {
   const navigate = useNavigate();
   useEffect(() => {

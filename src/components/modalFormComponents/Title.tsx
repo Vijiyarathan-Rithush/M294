@@ -1,5 +1,11 @@
 import type { TitleProperties } from "../../models/TitleProperties";
-
+/**
+ * Zeigt eine Überschrift an.
+ * Der Text wird als Titel angezeigt.
+ *
+ * @param {string} label - Der Text des Titels
+ * @returns {JSX.Element} Die Überschrift
+ */
 function Title({ label }: TitleProperties)
 {
   return (

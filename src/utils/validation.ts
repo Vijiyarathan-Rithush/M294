@@ -1,3 +1,6 @@
+/**
+ * Enthält alle Validierungsregeln für die Formularfelder.
+ */
 export const validationRules =
 {
   name:

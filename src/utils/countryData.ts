@@ -1,6 +1,11 @@
 
 import { countries } from "countries-list"
 
+/**
+ * Gibt alle Länderoptionen zurück, sortiert nach Priorität und Alphabet.
+ *
+ * @returns {Array<{ value: string, label: string }>} Die Liste der Länderoptionen
+ */
 export function getAllCountryOptions()
 {
     const priority = ["CH", "DE", "AT"];

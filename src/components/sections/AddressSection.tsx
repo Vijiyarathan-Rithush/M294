@@ -4,6 +4,11 @@ import CountryDropdownField from "../modalFormComponents/CountryDropdownField"
 import type { ModalFormData } from "../../models/ModalFormData"
 import { validationRules } from "../../utils/validation"
 
+/**
+ * Abschnitt für Adressdaten im Formular.
+ *
+ * @returns {JSX.Element} Die Felder für Adresse, Stadt, Postleitzahl und Land
+ */
 export default function AddressSection()
 {
   const { register, control, formState: { errors, dirtyFields } } = useFormContext<ModalFormData>()

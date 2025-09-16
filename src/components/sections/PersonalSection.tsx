@@ -4,6 +4,11 @@ import PhoneInputField from "../modalFormComponents/PhoneInputField"
 import type { ModalFormData } from "../../models/ModalFormData"
 import { validationRules } from "../../utils/validation"
 
+/**
+ * Abschnitt für persönliche Daten im Formular.
+ *
+ * @returns {JSX.Element} Die Felder für Name, Telefon und E-Mail
+ */
 export default function PersonalSection()
 {
   const { register, formState: { errors, dirtyFields } } = useFormContext<ModalFormData>()

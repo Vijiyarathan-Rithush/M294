@@ -5,6 +5,11 @@ import type { ModalFormData } from "../../models/ModalFormData";
 import { validationRules } from "../../utils/validation";
 import type { ToastData } from "../../models/ToastData";
 
+/**
+ * Hook für das Registrierungsformular. Stellt Formularlogik und Toast bereit.
+ *
+ * @returns {{ form: any, onSubmit: Function, toast: ToastData|null }} Formularfunktionen und Toast
+ */
 export function useRegistrationForm()
 {
   const [toast, setToast] = useState<ToastData | null>(null);
@@ -59,7 +64,7 @@ export function useRegistrationForm()
           setToast({ type: "error", message: "Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!" });
           return false;
         }
-        
+
         for (let i = 0; i < Math.min(files.length, 5); i++)
         {
           fd.append("idConfirmation", files[i]);

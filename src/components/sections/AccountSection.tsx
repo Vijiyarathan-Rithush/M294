@@ -3,6 +3,11 @@ import InputField from "../modalFormComponents/InputField"
 import type { ModalFormData } from "../../models/ModalFormData"
 import { validationRules } from "../../utils/validation"
 
+/**
+ * Abschnitt für Accountdaten im Formular.
+ *
+ * @returns {JSX.Element} Die Felder für Benutzername und Passwort
+ */
 export default function AccountSection()
 {
   const { register, getValues, formState: { errors, dirtyFields } } = useFormContext<ModalFormData>()

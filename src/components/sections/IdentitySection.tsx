@@ -4,6 +4,11 @@ import UploadField from "../modalFormComponents/UploadField"
 import type { ModalFormData } from "../../models/ModalFormData"
 import { validationRules } from "../../utils/validation"
 import AGB from "../AGB"
+/**
+ * Abschnitt für Identitätsdaten im Formular.
+ *
+ * @returns {JSX.Element} Die Felder für Geburtstag, Upload und AGB
+ */
 export default function IdentitySection()
 {
   const { register, formState: { errors, dirtyFields } } = useFormContext<ModalFormData>()

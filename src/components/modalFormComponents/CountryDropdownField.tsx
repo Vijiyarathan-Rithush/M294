@@ -1,14 +1,21 @@
+import type { CountryDropdownFieldProperties } from "../../models/CountryDropdownFieldProperties";
 import Select from "react-select";
 import { Controller } from "react-hook-form";
 import { useCountryOptions } from "../../utils/useCountryOptions";
 import { countrySelectStyles } from "../select/countrySelectStyles";
 import { OptionComponent, SingleValueComponent } from "../select/countrySelectComponents";
-import type { CountryDropdownFieldProperties } from "../../models/CountryDropdownFieldProperties";
-
+/**
+ * Zeigt ein Dropdown zur Auswahl eines Landes an.
+ * Zeigt eine Fehlermeldung, wenn ein Fehler vorliegt.
+ *
+ * @param {any} control - Das react-hook-form Control-Objekt
+ * @param {string} label - Der Text des Labels
+ * @param {string} name - Der Name des Feldes
+ * @returns {JSX.Element} Das Dropdown-Feld
+ */
 function CountryDropdownField({ control, label, name }: CountryDropdownFieldProperties)
 {
   const options = useCountryOptions();
-
   return (
     <div className="w-full text-left">
       <label className="block text-sm font-medium text-gray-900 mb-1 ml-1.5">

@@ -1,5 +1,16 @@
-import type { PhoneInputFieldProperties } from "../../models/PhoneInputProperties"
-
+import type { PhoneInputFieldProperties } from "../../models/PhoneInputProperties";
+/**
+ * Zeigt ein Eingabefeld für die Telefonnummer an.
+ * Die Vorwahl +41 ist fest vorgegeben.
+ * Zeigt Fehler an, wenn die Eingabe ungültig ist.
+ *
+ * @param {string} label - Der Text des Labels
+ * @param {string} [id] - Die ID des Feldes
+ * @param {any} [error] - Fehlerobjekt
+ * @param {boolean} [isValid] - Ist das Feld gültig?
+ * @param {string} [className] - Zusätzliche CSS-Klasse
+ * @returns {JSX.Element} Das Eingabefeld für Telefonnummern
+ */
 function PhoneInputField({ label, id, error, isValid, className, ...rest }: PhoneInputFieldProperties)
 {
   const inputId = id ?? (rest.name as string);

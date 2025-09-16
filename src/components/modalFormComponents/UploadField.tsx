@@ -1,11 +1,26 @@
+
+/**
+ * Zeigt ein Datei-Upload-Feld an. Nutzer können bis zu 5 Dateien auswählen.
+ */
 import type { UploadFieldProperties } from "../../models/UploadFieldProperties";
 import { useState } from "react";
 
+/**
+ * Zeigt ein Datei-Upload-Feld an. Nutzer können bis zu 5 Dateien auswählen.
+ *
+ * @param {string} label - Der Text des Labels
+ * @param {string} [id] - Die ID des Feldes
+ * @param {any} [rest] - Weitere Props für das Input-Feld
+ * @returns {JSX.Element} Das Upload-Feld
+ */
 function UploadField({label, id, ...rest}: UploadFieldProperties)
 {
     const inputId = id ?? (rest.name as string | undefined);
     const [fileError, setFileError] = useState<string | null>(null);
 
+    /**
+     * Prüft die ausgewählten Dateien und zeigt Fehler an, wenn zu viele oder zu große Dateien gewählt wurden.
+     */
     function handleChange(e: React.ChangeEvent<HTMLInputElement>)
     {
         const files = e.target.files;
