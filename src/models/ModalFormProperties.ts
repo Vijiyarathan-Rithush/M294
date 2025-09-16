@@ -1,3 +1,4 @@
-export interface ModalFormProperties {
+export interface ModalFormProperties
+{
     setOpen: (open: boolean) => void;
 }

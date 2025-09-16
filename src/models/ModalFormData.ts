@@ -1,4 +1,5 @@
-export type ModalFormData = {
+export type ModalFormData =
+{
     name: string;
     username: string;
     password: string;

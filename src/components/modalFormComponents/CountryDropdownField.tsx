@@ -5,7 +5,8 @@ import { countrySelectStyles } from "../select/countrySelectStyles";
 import { OptionComponent, SingleValueComponent } from "../select/countrySelectComponents";
 import type { CountryDropdownFieldProperties } from "../../models/CountryDropdownFieldProperties";
 
-function CountryDropdownField({ control, label, name }: CountryDropdownFieldProperties) {
+function CountryDropdownField({ control, label, name }: CountryDropdownFieldProperties)
+{
   const options = useCountryOptions();
 
   return (

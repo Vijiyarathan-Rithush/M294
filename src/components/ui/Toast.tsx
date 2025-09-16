@@ -1,6 +1,7 @@
 import type { ToastData } from "../../models/ToastData";
 
-export default function Toast({ toast }: { toast: ToastData | null }) {
+export default function Toast({ toast }: { toast: ToastData | null })
+{
   if (!toast) return null;
   return (
     <div className="toast toast-top toast-end z-50">

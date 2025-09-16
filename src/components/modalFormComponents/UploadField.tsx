@@ -6,19 +6,24 @@ function UploadField({label, id, ...rest}: UploadFieldProperties)
     const inputId = id ?? (rest.name as string | undefined);
     const [fileError, setFileError] = useState<string | null>(null);
 
-    function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleChange(e: React.ChangeEvent<HTMLInputElement>)
+    {
         const files = e.target.files;
-        if (files && files.length > 5) {
+        if (files && files.length > 5)
+        {
             setFileError("Maximal 5 Dateien erlaubt!");
             e.target.value = "";
             return;
         }
-        if (files && files.length > 0) {
+        if (files && files.length > 0)
+        {
             let totalSize = 0;
-            for (let i = 0; i < files.length; i++) {
+            for (let i = 0; i < files.length; i++)
+            {
                 totalSize += files[i].size;
             }
-            if (totalSize > 5 * 1024 * 1024) {
+            if (totalSize > 5 * 1024 * 1024)
+            {
                 setFileError("Die Gesamtgröße der Dateien darf 5MB nicht überschreiten!");
                 e.target.value = "";
                 return;

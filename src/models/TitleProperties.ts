@@ -1,3 +1,4 @@
-export interface TitleProperties {
+export interface TitleProperties
+{
     label: string;
 }

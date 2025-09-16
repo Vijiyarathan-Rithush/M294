@@ -1,7 +1,8 @@
 import type { AGBProperties } from "../models/AGBProperties";
 import { validationRules } from "../utils/validation";
 
-export default function AGB({ register, errors }: AGBProperties) {
+export default function AGB({ register, errors }: AGBProperties)
+{
   return (
     <>
       <label className="flex flex-col gap-1 mt-2 text-black">

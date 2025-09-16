@@ -20,15 +20,17 @@ interface ModalFormProps {
 
 function ModalForm({ setOpen }: ModalFormProps) {
     const { form, onSubmit, toast } = useRegistrationForm();
-    const { handleSubmit, formState: { isSubmitting, isValid } } = form;
+        const { handleSubmit, formState: { isSubmitting, isValid } } = form;
     const navigate = useNavigate();
     // Wrapper, damit setOpen und navigate übergeben werden kann
-    const handleFormSubmit = async (data: ModalFormData) => {
-        const success = await onSubmit(data, setOpen);
-        if (success) {
-            navigate("/success");
-        }
-    };
+        const handleFormSubmit = async (data: ModalFormData) =>
+        {
+            const success = await onSubmit(data, setOpen);
+            if (success)
+            {
+                navigate("/success");
+            }
+        };
     return (
         <>
             <Toast toast={toast} />

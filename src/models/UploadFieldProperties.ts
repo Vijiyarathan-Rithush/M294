@@ -1,6 +1,7 @@
 import type { FieldError } from "react-hook-form";
 
-export interface UploadFieldProperties extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface UploadFieldProperties extends React.InputHTMLAttributes<HTMLInputElement>
+{
     id?: string;
     label: string;
     error?: FieldError;

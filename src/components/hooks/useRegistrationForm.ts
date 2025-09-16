@@ -4,7 +4,7 @@ import type { ModalFormData } from "../../models/ModalFormData";
 import { validationRules } from "../../utils/validation";
 import type { ToastData } from "../../models/ToastData";
 
-export function useRegistrationForm() 
+export function useRegistrationForm()
 {
   const [toast, setToast] = useState<ToastData | null>(null);
 
@@ -19,16 +19,18 @@ export function useRegistrationForm()
 
   const { getValues } = form;
 
-  const confirmPasswordRule = 
+  const confirmPasswordRule =
   {
     required: "Bitte bestätigen Sie Ihr Passwort",
     validate: (v: string) => v === getValues("password") || "Passwörter stimmen nicht überein",
   };
 
   // setOpen als optionales Argument
-  const onSubmit = async (data: ModalFormData, setOpen?: (open: boolean) => void): Promise<boolean> => {
+  const onSubmit = async (data: ModalFormData, setOpen?: (open: boolean) => void): Promise<boolean> =>
+  {
     let success = false;
-    try {
+    try
+    {
       const fd = new FormData();
       fd.append("name", data.name);
       fd.append("username", data.username);
@@ -42,12 +44,15 @@ export function useRegistrationForm()
       fd.append("password", data.password);
 
       const files = data.idConfirmation as unknown as FileList;
-      if (files && files.length > 0) {
+      if (files && files.length > 0)
+      {
         let totalSize = 0;
-        for (let i = 0; i < files.length; i++) {
+        for (let i = 0; i < files.length; i++)
+        {
           totalSize += files[i].size;
         }
-        if (totalSize > 5 * 1024 * 1024) {
+        if (totalSize > 5 * 1024 * 1024)
+        {
           setToast({ type: "error", message: "Die Gesamtgrösse der Dateien darf 5MB nicht überschreiten!" });
           return false;
         }
@@ -56,29 +61,42 @@ export function useRegistrationForm()
 
       const res = await fetch("http://localhost:3002/login", { method: "POST", body: fd });
 
-      if (res.status === 200) {
+      if (res.status === 200)
+      {
         setToast({ type: "success", message: "Registrierung erfolgreich!" });
-        setTimeout(() => {
+        setTimeout(() =>
+        {
           if (setOpen) setOpen(false);
         }, 2000);
         success = true;
-      } else if (res.status === 405) {
+      }
+      else if (res.status === 405)
+      {
         let msg = "Benutzername oder E-Mail bereits vergeben.";
-        try {
+        try
+        {
           const data = await res.json();
           if (data && data.field === "email") msg = "E-Mail ist bereits vergeben.";
           else if (data && data.field === "username") msg = "Benutzername ist bereits vergeben.";
           else if (data && data.message) msg = data.message;
-        } catch {
+        }
+        catch
+        {
           // Fehler beim Parsen ignorieren
         }
         setToast({ type: "error", message: msg });
-      } else {
+      }
+      else
+      {
         setToast({ type: "error", message: `Unbekannter Fehler (${res.status}) – bitte erneut versuchen.` });
       }
-    } catch {
+    }
+    catch
+    {
       setToast({ type: "error", message: "Netzwerkfehler – später erneut versuchen" });
-    } finally {
+    }
+    finally
+    {
       setTimeout(() => setToast(null), 4000);
     }
     return success;
