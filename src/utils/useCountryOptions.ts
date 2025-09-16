@@ -1,11 +1,8 @@
 
-import countryList from "react-select-country-list"
 import type { Option } from "../models/Option"
+import { getAllCountryOptions } from "./countryData"
 
 export function useCountryOptions(): Option[]
 {
-    const allCountries = countryList().getData() as Option[]
-    const countriesCopy = [...allCountries]
-    countriesCopy.sort((a, b) => a.label.localeCompare(b.label))
-    return countriesCopy
+    return getAllCountryOptions().filter((c): c is Option => !!c);
 }
